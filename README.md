@@ -1,2 +1,2 @@
-# redux-training-projec
+# redux-training-project
 redux-ru-tutorial
