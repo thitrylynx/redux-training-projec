@@ -1,32 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from './Button'
 
 export class Page extends React.Component {
-  onBtnClick = e => {
-    const year = +e.currentTarget.innerText
+  changeYear = e => {
+    const year = Number(e.currentTarget.innerText)
     this.props.setYear(year)
   }
+
   render() {
-    const { year, photos } = this.props
+    const { year, photos, years } = this.props
+
     return (
       <div className="ib page">
-        <p>
-          <button className="btn" onClick={this.onBtnClick}>
-            2018
-          </button>{' '}
-          <button className="btn" onClick={this.onBtnClick}>
-            2017
-          </button>{' '}
-          <button className="btn" onClick={this.onBtnClick}>
-            2016
-          </button>{' '}
-          <button className="btn" onClick={this.onBtnClick}>
-            2015
-          </button>{' '}
-          <button className="btn" onClick={this.onBtnClick}>
-            2014
-          </button>
-        </p>
+        <Button years={years} changeYear={this.changeYear} />
         <h3>{year} год</h3>
         <p>У тебя {photos.length} фото.</p>
       </div>
@@ -36,6 +23,7 @@ export class Page extends React.Component {
 
 Page.propTypes = {
   year: PropTypes.number.isRequired,
+  years: PropTypes.array.isRequired,
   photos: PropTypes.array.isRequired,
-  setYear: PropTypes.func.isRequired, // добавили новое свойство в propTypes
+  setYear: PropTypes.func.isRequired,
 }

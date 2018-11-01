@@ -2,6 +2,7 @@ import { SET_YEAR } from '../actions/PageActions'
 
 const initialState = {
   year: 2018,
+  years: [2014, 2015, 2016, 2017, 2018],
   photos: [],
 }
 
