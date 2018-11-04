@@ -3,23 +3,21 @@ import PropTypes from 'prop-types'
 
 export class Button extends React.Component {
   render() {
-    const { years, changeYear } = this.props
-
+    const { currentYear, changeYear } = this.props
     return (
-      <p>
-        {years.map(currentYear => {
-          return (
-            <button key={currentYear} className="btn" onClick={changeYear}>
-              {currentYear}
-            </button>
-          )
-        })}
-      </p>
+      <button
+        className="btn"
+        onClick={() => {
+          changeYear(currentYear)
+        }}
+      >
+        {currentYear}
+      </button>
     )
   }
 }
 
 Button.propTypes = {
-  years: PropTypes.array.isRequired,
+  currentYear: PropTypes.number.isRequired,
   changeYear: PropTypes.func.isRequired,
 }

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import { Button } from './Button'
 
 export class Page extends React.Component {
-  changeYear = e => {
-    const year = Number(e.currentTarget.innerText)
-    this.props.setYear(year)
+  changeYear = currentYear => {
+    this.props.setYear(currentYear)
   }
 
   render() {
@@ -13,7 +12,15 @@ export class Page extends React.Component {
 
     return (
       <div className="ib page">
-        <Button years={years} changeYear={this.changeYear} />
+        {years.map(currentYear => {
+          return (
+            <Button
+              key={currentYear}
+              currentYear={currentYear}
+              changeYear={this.changeYear}
+            />
+          )
+        })}
         <h3>{year} год</h3>
         <p>У тебя {photos.length} фото.</p>
       </div>
